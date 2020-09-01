@@ -10,6 +10,9 @@ public class  ScannerFile {
 
     public String longestWord = "";
 
+    /*
+        Method to get the longest word form the file stored in the 'resources' directory
+     */
     public String getLongestWord() {
         try {
             Scanner sc = new Scanner(new File("resources/example.txt"));
@@ -24,12 +27,14 @@ public class  ScannerFile {
             e.printStackTrace();
         }
         System.out.println("The longest word is: "+ longestWord);
-
         return longestWord;
 
     }
 
 
+    /*
+        Method to reverse the longest word
+     */
     public String reverseLongestWord(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(longestWord);

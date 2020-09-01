@@ -35,8 +35,8 @@ public class WomensClothingPage {
         List<WebElement> list = driver.findElements(products);
         list.get(1).click();
         selectFirstSize();
-        getProductDescription();
-        getPriceProduct();
+        isProductDescriptionEmpty();
+        isPriceProductEmpty();
         waitDriver.until(ExpectedConditions.elementToBeClickable(addProduct));
         driver.findElement(addProduct).click();
         waitDriver.until(ExpectedConditions.elementToBeClickable(goViewShop));
@@ -56,15 +56,14 @@ public class WomensClothingPage {
         sizeList.get(1).click();
     }
 
-    public String getProductDescription(){
-        productName = driver.findElement(productTittle).getText();
-
-        return productName;
+    public Boolean isProductDescriptionEmpty(){
+        productName= driver.findElement(productTittle).getText();
+        return productName.isEmpty();
     }
 
-    public boolean getPriceProduct(){
+    public Boolean isPriceProductEmpty(){
         price= driver.findElement(priceProduct).getText();
-        return price != "null";
+        return  price.isEmpty();
     }
 
 }

@@ -12,6 +12,7 @@ public class BaseTests {
     protected HomePage homePage;
     protected WomensClothingSectionPage womensClothingSectionPage;
     protected  WomensClothingPage womensClothingPage;
+    protected  ViewShopPage viewShopPage;
 
 
     @BeforeClass

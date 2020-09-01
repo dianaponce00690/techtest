@@ -15,6 +15,7 @@ public class ViewShopPage {
     private By dropdown= By.className("ffSelect");
     public By productTitle = By.cssSelector("a[class='name']");
     public By priceProduct = By.cssSelector("div[class^='unitpricecolumn'] div");
+    private WomensClothingPage womensClothingPage;
 
     public ViewShopPage(WebDriver driver){
         this.driver= driver;
@@ -37,18 +38,21 @@ public class ViewShopPage {
         }
 
         waitDriver.until(ExpectedConditions.elementToBeClickable(productTitle));
-        getProductTitleCart();
+        isTheCorrectProductTittle();
         waitDriver.until(ExpectedConditions.elementToBeClickable(priceProduct));
-        getPriceProduct();
+        isTheCorrectPriceProduct();
 
     }
 
-    public String getProductTitleCart(){
-        return driver.findElement(productTitle).getText();
+    public Boolean isTheCorrectProductTittle(){
+        String productCart= driver.findElement(productTitle).getText();
+        return womensClothingPage.productName.equals(productCart);
+
     }
 
-    public String getPriceProduct(){
-        return driver.findElement(priceProduct).getText();
+    public Boolean isTheCorrectPriceProduct(){
+        String priceCart= driver.findElement(priceProduct).getText();
+        return womensClothingPage.price.equals(priceCart);
     }
 
 }
