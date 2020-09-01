@@ -24,7 +24,7 @@ public class ViewShopPage {
     public void increaseAmountProduct(String amount){
         WebDriverWait waitDriver = new WebDriverWait(driver,20);
         waitDriver.until(ExpectedConditions.elementToBeClickable(dropdown));
-
+        System.out.println("test");
         driver.findElement(dropdown).click();
         waitDriver.until(ExpectedConditions.elementToBeClickable(dropdownList));
 
