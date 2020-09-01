@@ -18,7 +18,7 @@ public class WomensClothingSectionPage {
     /*
         Method to select "Clothes" option and goes to the women's clothing page
      */
-    public WomensClothingPage clickShopNow(){
+    public WomensClothingPage clickWomenClothing(){
         isPublicityDisplayed();
         WebDriverWait waitDriver = new WebDriverWait(driver,20);
         waitDriver.until(ExpectedConditions.elementToBeClickable(clothes));

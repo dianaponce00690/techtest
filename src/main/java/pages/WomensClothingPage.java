@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.desktop.SystemSleepEvent;
+import java.security.PublicKey;
 import java.util.List;
 
 public class WomensClothingPage {
@@ -15,6 +16,10 @@ public class WomensClothingPage {
     private By addProduct = By.cssSelector("button[data-auto-id='add-to-bag']");
     private  By sizeSelectorList = By.cssSelector("div[data-auto-id='size-selector']>button");
     private  By goViewShop = By.cssSelector("a[data-auto-id='view-bag-desktop']");
+    private  By productTittle = By.cssSelector("div[class='product-description___2cJO2'] h1");
+    private  By priceProduct= By.cssSelector("div[class='product-description___2cJO2']>div:nth-child(3)>h5+div>div>span");
+    public String productName="";
+    public String price="";
 
     public WomensClothingPage(WebDriver driver){
         this.driver= driver;
@@ -30,7 +35,8 @@ public class WomensClothingPage {
         List<WebElement> list = driver.findElements(products);
         list.get(1).click();
         selectFirstSize();
-
+        getProductDescription();
+        getPriceProduct();
         waitDriver.until(ExpectedConditions.elementToBeClickable(addProduct));
         driver.findElement(addProduct).click();
         waitDriver.until(ExpectedConditions.elementToBeClickable(goViewShop));
@@ -49,4 +55,16 @@ public class WomensClothingPage {
         List<WebElement> sizeList = driver.findElements(sizeSelectorList);
         sizeList.get(1).click();
     }
+
+    public String getProductDescription(){
+        productName = driver.findElement(productTittle).getText();
+
+        return productName;
+    }
+
+    public boolean getPriceProduct(){
+        price= driver.findElement(priceProduct).getText();
+        return price != "null";
+    }
+
 }
